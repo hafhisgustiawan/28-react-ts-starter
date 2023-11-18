@@ -1,15 +1,25 @@
+import NewTodo from './components/NewTodo';
 import Todos from './components/Todos';
-import Todo from './models/todo';
+import TodosContextProvider from './store/todos-context';
 
 function App() {
-  const todos = [new Todo('Learn react'), new Todo('Learn typescript')];
+  // const [todos, setTodos] = useState<Todo[]>([]);
+
+  // const addTodoHandler = (todoText: string | undefined) => {
+  //   setTodos((prev) => [...prev, new Todo(todoText || '')]);
+  // };
+
+  // const deleteTodoHandler = (id: string) => {
+  //   setTodos((prev) => prev.filter((el: Todo) => el.id !== id));
+  // };
 
   return (
-    <>
-      <Todos items={todos}>
-        <p>Ini adalah child</p>
-      </Todos>
-    </>
+    <TodosContextProvider>
+      <div>
+        <NewTodo />
+        <Todos />
+      </div>
+    </TodosContextProvider>
   );
 }
 
